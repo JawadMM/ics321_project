@@ -11,7 +11,7 @@ const reciveSchema = mongoose.Schema({
     required: true,
     ref: "Doner",
   },
-  role: {
+  Blood: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "Blood",
