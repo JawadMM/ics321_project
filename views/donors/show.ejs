@@ -3,13 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>People</title>
+    <title><%= donor.Fname %></title>
   </head>
   <body>
-    <ul>
-      <% for (let person of people) { %>
-      <li><%=person.Fname %></li>
-      <% } %>
-    </ul>
+    <a href="/donors">All Donors</a>
+    <h1><%= donor.Fname %> <%= donor.Lname%></h1>
+
+    <a href="/donors/<%= donot.id %>"/edit></a>
   </body>
 </html>

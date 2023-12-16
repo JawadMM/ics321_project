@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add new Donor</title>
+  </head>
+  <body>
+    <h1>Edit Donor</h1>
+    <form action="/donors/<%= donor.id %>?_method=put" method="post">
+      <label for="Fname">First name</label>
+      <input
+        type="text"
+        name="person[Fname]"
+        id="Fname"
+        value="<%= donor.Fname %>"
+      />
+      <label for="Lname">Last name</label>
+      <input
+        type="text"
+        name="person[Lname]"
+        id="Lname"
+        value="<%= donor.Lname %>"
+      />
+
+      <label for="Address">Address</label>
+      <input
+        type="text"
+        name="person[Address]"
+        id="Address"
+        value="<%= donor.Address %>"
+      />
+      <label for="Bdate">Birth Date</label>
+      <input
+        type="date"
+        name="person[Bdate]"
+        id="Bdate"
+        value="<%= donor.Bdate %>"
+      />
+      <label for="Email">Email</label>
+      <input
+        type="email"
+        name="person[Email]"
+        id="Email"
+        value="<%= donor.Email %>"
+      />
+      <button>Edit Donor</button>
+    </form>
+  </body>
+</html>
