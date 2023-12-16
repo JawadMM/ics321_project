@@ -42,7 +42,13 @@ app.get("/donors/:id", async (req, res) => {
 app.get("/donors/:id/edit", async (req, res) => {
   const donor = await Person.findById(req.params.id);
 
-  res.render("donors/show", { donor });
+  res.render("donors/edit", { donor });
+});
+
+app.put("/donors/:id", async (req, res) => {
+  const { id } = req.params;
+  const donor = await Person.findByIdAndUpdate(id, { ...req.body.person });
+  res.redirect(`/donors/${donor.id}`);
 });
 
 app.post("/donors", async (req, res) => {
