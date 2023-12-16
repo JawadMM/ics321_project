@@ -10,5 +10,8 @@
     <h1><%= donor.Fname %> <%= donor.Lname%></h1>
 
     <a href="/donors/<%= donor.id %>/edit">Edit donor</a>
+    <form action="/donors/<%= donor.id %>?_method=Delete" method="Post">
+      <button>Delete donor</button>
+    </form>
   </body>
 </html>

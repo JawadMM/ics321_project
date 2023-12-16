@@ -51,6 +51,12 @@ app.put("/donors/:id", async (req, res) => {
   res.redirect(`/donors/${donor.id}`);
 });
 
+app.delete("/donors/:id", async (req, res) => {
+  const { id } = req.params;
+  await Person.findByIdAndDelete(id);
+  res.redirect("/donors");
+});
+
 app.post("/donors", async (req, res) => {
   const newPerson = await new Person(req.body.person);
   await newPerson.save();
