@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { personSchema } = require("./person");
 
-const donerSchema = mongoose.Schema({
+const donorSchema = mongoose.Schema({
   ...personSchema.obj,
   weight: {
     type: Number,
@@ -13,7 +13,7 @@ const donerSchema = mongoose.Schema({
     required: true,
   },
   donationCount: {
-    type: number,
+    type: Number,
     required: true,
   },
   driveId: {
@@ -26,6 +26,6 @@ const donerSchema = mongoose.Schema({
   },
 });
 
-const Doner = mongoose.model("Doner", donerSchema);
+const Donor = mongoose.model("Donor", donorSchema);
 
-module.exports = Doner;
+module.exports = Donor;

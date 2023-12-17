@@ -10,9 +10,10 @@ const bloodCollectionSchema = mongoose.Schema({
     required: true,
   },
   location: {
-    type: [mongoose.Schema.ObjectId.ObjectId],
+    // type: [mongoose.Schema.ObjectId.ObjectId],
+    type: String,
     required: true,
-    ref: "Location",
+    // ref: "Location",
   },
 });
 

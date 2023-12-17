@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const { Person } = require("./models/person");
+const { BloodCollection } = require("./models/bloodCollection");
 
 async function main() {
   await mongoose.connect("mongodb://127.0.0.1:27017/test");
@@ -30,3 +31,11 @@ newPerson
   .catch((err) => {
     console.log(err);
   });
+
+const bloodCollection = new BloodCollection({
+  date: new Date(1999, 1, 3),
+  availableTypes: ["A+", "O+", "O-"],
+  location: "Dammam",
+});
+
+bloodCollection.save();

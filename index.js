@@ -8,6 +8,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 const { Person } = require("./models/person");
+const Donor = require("./models/donor");
+const { Recipient } = require("./models/recipient");
+const { BloodCollection } = require("./models/bloodCollection");
 
 async function main() {
   await mongoose.connect("mongodb://127.0.0.1:27017/test");
@@ -23,10 +26,11 @@ main()
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+//Donor Routes
 app.get("/donors", async (req, res) => {
-  const people = await Person.find({});
-  console.log(people);
-  res.render("donors/index", { people });
+  const donors = await Person.find({});
+  console.log(donors);
+  res.render("donors/index", { donors });
 });
 
 app.get("/donors/new", async (req, res) => {
@@ -58,11 +62,41 @@ app.delete("/donors/:id", async (req, res) => {
 });
 
 app.post("/donors", async (req, res) => {
-  const newPerson = await new Person(req.body.person);
-  await newPerson.save();
+  // const newPerson = await new Donor(...req.body.person);
+  // await newPerson.save();
   console.log(req.body.person);
-  const people = await Person.find({});
-  res.render("donors/index", { people });
+  const {
+    Fname,
+    Lname,
+    Address,
+    Bdate,
+    Email,
+    weight,
+    donationDate,
+    medicalHistory,
+  } = req.body.person;
+
+  const derive = req.body.derive;
+
+  const params = req.body.params;
+  console.log(derive);
+  const newDonor = await new Donor({
+    // ...req.body.person,
+    donationCount: 1,
+    Fname: Fname,
+    Lname: Lname,
+    Address: Address,
+    Bdate: Bdate,
+    Email: Email,
+    weight: weight,
+    donationCount: 1,
+    deriveId: await BloodCollection.find({ "location": derive }).id,
+    donationDate: donationDate,
+    medicalHistory: medicalHistory,
+  });
+  await newDonor.save();
+  const donors = await Person.find({});
+  res.render("donors/index", { donors });
 });
 
 app.listen(4000, () => {

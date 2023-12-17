@@ -7,7 +7,7 @@
   </head>
   <body>
     <h1>Add new Donor</h1>
-    <form action="/donors" method="post">
+    <form action="/people" method="post">
       <label for="Fname">First name</label>
       <input type="text" name="person[Fname]" id="Fname" />
       <label for="Lname">Last name</label>
@@ -19,26 +19,6 @@
       <input type="date" name="person[Bdate]" id="Bdate" />
       <label for="Email">Email</label>
       <input type="email" name="person[Email]" id="Email" />
-      <label for="weight">Weight</label>
-      <input type="number" name="person[weight]" id="weight" />
-      <label for="donationDate">Donation Date</label>
-      <input type="date" name="person[donationDate]" id="donationDate" />
-
-      <label for="derive">Derive</label>
-      <select name="derive" id="derive">
-        <option value="Dammam">Dammam</option>
-        <option value="Dhahran">Dhahran</option>
-      </select>
-
-      <label for="medicalHistory">Medical History</label>
-
-      <textarea
-        name="person[medicalHistory]"
-        id="medicalHistory"
-        cols="30"
-        rows="10"
-      ></textarea>
-
       <button>Add Donor</button>
     </form>
   </body>
